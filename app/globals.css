@@ -1,26 +1,166 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #1a1a1e;
+  --foreground: #ffffff;
+  --foreground-muted: rgba(255, 255, 255, 0.85);
+  --foreground-subtle: #9ca3af;
+
+  --accent-purple: #b39fff;
+  --accent-purple-dim: #a78bfa;
+  --accent-purple-dark: #8b5cf6;
+  --accent-purple-soft: rgba(179, 159, 255, 0.15);
+
+  --surface: #252529;
+  --surface-elevated: #2d2d32;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-input: rgba(255, 255, 255, 0.25);
+
+  --button-primary-bg: #ffffff;
+  --button-primary-text: #171717;
+  --button-secondary-bg: #2d2d32;
+  --button-secondary-text: #ffffff;
+
+  --input-bg: transparent;
+  --input-placeholder: #6b7280;
+
+  --nav-btn-bg: #2d2d32;
+  --nav-btn-border: rgba(255, 255, 255, 0.08);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  --header-height: 56px;
+  --content-max-width: min(100%, 420px);
+  --section-padding-x: 24px;
+  --section-padding-y: 32px;
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow: hidden;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
   }
+
+  .section-view-transition {
+    view-transition-name: section-view;
+  }
+
+  ::view-transition-old(section-view) {
+    animation: section-view-out 0.35s ease-in-out forwards;
+  }
+
+  ::view-transition-new(section-view) {
+    animation: section-view-in 0.35s ease-in-out forwards;
+  }
+
+  @keyframes section-view-out {
+    from {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-24%) scale(0.96);
+    }
+  }
+
+  @keyframes section-view-in {
+    from {
+      opacity: 0;
+      transform: translateX(24%) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+body.mobile-section-lock,
+body.section-navigation-lock {
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+}
+
+body.section-navigation-lock {
+  touch-action: none;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 2px;
+}
+
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 1rem;
+}
+.swiper-pagination-bullet {
+  background: var(--surface-elevated) !important;
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+}
+.swiper-pagination-bullet-active {
+  background: var(--accent-purple) !important;
+  transform: scale(1.2);
+}
+
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
 }
