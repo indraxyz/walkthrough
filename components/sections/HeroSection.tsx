@@ -51,7 +51,8 @@ export default function HeroSection({
         </div>
         <h1
           id="hero-heading"
-          className="text-2xl sm:text-3xl font-bold text-[var(--foreground)] leading-tight max-w-sm"
+          className="text-2xl sm:text-3xl text-[var(--foreground)] leading-tight max-w-sm"
+          style={{ fontFamily: "var(--font-graphik-medium)" }}
         >
           Compare your thoughts on{" "}
           <span

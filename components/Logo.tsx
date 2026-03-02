@@ -11,7 +11,11 @@ const STAGGER = 0.028;
 const DURATION = 0.2;
 
 const logoTextClasses =
-  "font-bold text-xl tracking-tight text-[var(--foreground)] leading-none";
+  "text-xl tracking-tight text-[var(--foreground)] leading-none";
+
+const logoFontStyle: React.CSSProperties = {
+  fontFamily: "var(--font-graphik-bold), system-ui, sans-serif",
+};
 
 interface LogoProps {
   className?: string;
@@ -44,7 +48,7 @@ export default function Logo({ className = "" }: LogoProps) {
         duration: DURATION,
         ease: "power2.in",
       }),
-      0
+      0,
     );
     tlRef.current.to(
       exitChars,
@@ -56,7 +60,7 @@ export default function Logo({ className = "" }: LogoProps) {
         stagger: STAGGER,
         ease: "power2.in",
       },
-      0
+      0,
     );
   }, [getExitChars]);
 
@@ -78,7 +82,7 @@ export default function Logo({ className = "" }: LogoProps) {
         duration: DURATION,
         ease: "power2.out",
       }),
-      0
+      0,
     );
     tlRef.current.to(
       exitChars,
@@ -89,7 +93,7 @@ export default function Logo({ className = "" }: LogoProps) {
         stagger: STAGGER,
         ease: "power2.out",
       },
-      0
+      0,
     );
   }, [getExitChars]);
 
@@ -105,13 +109,14 @@ export default function Logo({ className = "" }: LogoProps) {
       <span
         aria-hidden
         className={`invisible inline-block ${logoTextClasses}`}
-        style={{ pointerEvents: "none" }}
+        style={{ ...logoFontStyle, pointerEvents: "none" }}
       >
         {LOGO_TEXT}
       </span>
       <span
         ref={containerRef}
         className={`absolute left-0 top-0 inline-block w-max min-h-[1em] ${logoTextClasses}`}
+        style={logoFontStyle}
       >
         {LOGO_TEXT.split("").map((char, i) => (
           <span
