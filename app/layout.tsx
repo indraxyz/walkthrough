@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "juicebox | Reality check",
-  description:
-    "Compare your thoughts on technology with current industry opinions.",
+  title: "Walkthrough",
+  description: "A walkthrough of the app.",
 };
 
 export default function RootLayout({

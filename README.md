@@ -1,4 +1,4 @@
-# Walkthrough | juicebox | Reality check
+# Walkthrough
 
 Creating Walkthrough interaction. The homepage is a single full-viewport experience with a central hexagon motif and three main sections, navigated by scroll on desktop and by section switcher (with optional view transitions) on mobile.
 

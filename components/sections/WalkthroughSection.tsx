@@ -182,7 +182,7 @@ export default function WalkthroughSection({
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={slide.id}>
-              <div className="flex flex-col items-center text-center pt-4 pb-6">
+              <div className="flex flex-col items-center text-center pt-20 sm:pt-28 pb-6">
                 <h2 id="walkthrough-heading" className="sr-only">
                   Walkthrough step {index + 1}
                 </h2>

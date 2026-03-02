@@ -44,6 +44,7 @@ export default function HomePage() {
   const gradientRef = useRef<HTMLDivElement>(null);
   const solidRef = useRef<HTMLDivElement>(null);
   const formSectionRef = useRef<FormSectionRef>(null);
+  const hasAnimatedEntrance = useRef(false);
 
   const goToSection = useCallback(
     (id: string) => {
@@ -72,7 +73,30 @@ export default function HomePage() {
   }, [mounted, isMobile]);
 
   useEffect(() => {
-    if (!hexagonRef.current) return;
+    if (!mounted || !hexagonRef.current || !gradientRef.current) return;
+    if (hasAnimatedEntrance.current) return;
+    gsap.set(hexagonRef.current, { opacity: 0, scale: 0.88 });
+    gsap.set(gradientRef.current, { opacity: 0 });
+    gsap.to(hexagonRef.current, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.9,
+      ease: "power2.out",
+      overwrite: true,
+      onComplete: () => {
+        hasAnimatedEntrance.current = true;
+      },
+    });
+    gsap.to(gradientRef.current, {
+      opacity: 1,
+      duration: 0.7,
+      ease: "power2.out",
+      delay: 0.15,
+    });
+  }, [mounted]);
+
+  useEffect(() => {
+    if (!hexagonRef.current || !hasAnimatedEntrance.current) return;
     const scale =
       currentSection === "hero"
         ? 1
@@ -188,6 +212,8 @@ export default function HomePage() {
             className="object-contain drop-shadow-[0_0_60px_rgba(167,139,250,0.4)]"
             sizes="(max-width: 768px) 200px, 240px"
             unoptimized
+            loading="eager"
+            priority
           />
         </div>
         <div
