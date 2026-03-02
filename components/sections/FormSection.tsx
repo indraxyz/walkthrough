@@ -69,14 +69,17 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
     const {
       register,
       handleSubmit,
+      watch,
       trigger,
       formState: { errors },
       getValues,
     } = useForm<WalkthroughFormData>({
       resolver: zodResolver(walkthroughFormSchema),
       defaultValues: { firstName: "", email: "" },
-      mode: "onBlur",
+      mode: "onChange",
     });
+
+    const watchedValue = watch(currentStep?.field ?? "firstName") ?? "";
 
     useEffect(() => {
       if (!isActive) return;
@@ -118,11 +121,11 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
         >
           <div className="flex-1 min-h-0 flex flex-col items-center justify-center w-full max-w-[var(--content-max-width)] mx-auto text-center">
             <div className="w-24 h-24 shrink-0 mb-6" aria-hidden />
-            <p className="text-[var(--foreground)] text-lg mb-2">
+            <p className="text-[var(--foreground)] text-lg sm:text-xl mb-2">
               Thanks, {values.firstName}! Now, it&apos;s time to get a reality
               check.
             </p>
-            <p className="text-[var(--foreground-muted)] text-base">
+            <p className="text-[var(--foreground-muted)] text-lg sm:text-xl">
               This will take 2-3 minutes.
             </p>
           </div>
@@ -154,7 +157,7 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
           <h2 id="form-heading" className="sr-only">
             Form step {stepIndex + 1}: {currentStep.field}
           </h2>
-          <p className="text-[var(--foreground)] text-center text-base sm:text-lg mb-6 max-w-[var(--content-max-width)]">
+          <p className="text-[var(--foreground)] text-center text-lg sm:text-xl mb-6 max-w-[var(--content-max-width)]">
             {currentStep.prompt}
           </p>
         </div>
@@ -175,6 +178,7 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
                     id="firstName"
                     label="First name"
                     placeholder={currentStep.placeholder}
+                    value={watchedValue}
                     error={errors.firstName?.message}
                     onSubmit={handleStepSubmit}
                     submitLabel="Continue"
@@ -196,6 +200,7 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
                     label="Email address"
                     placeholder={currentStep.placeholder}
                     type="email"
+                    value={watchedValue}
                     error={errors.email?.message}
                     onSubmit={handleStepSubmit}
                     submitLabel="Continue"

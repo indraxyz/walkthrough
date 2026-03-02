@@ -49,7 +49,7 @@ export default function HeroSection({
             );
           })}
         </div>
-        <h1
+        <span
           id="hero-heading"
           className="text-2xl sm:text-3xl text-[var(--foreground)] leading-tight max-w-sm"
           style={{ fontFamily: "var(--font-graphik-medium)" }}
@@ -60,16 +60,17 @@ export default function HeroSection({
             style={{
               backgroundImage:
                 "linear-gradient(90deg, #e4c0f0, #ae82bd, #abb3f5)",
+              fontFamily: "var(--font-graphik-medium)",
             }}
           >
             technology
           </span>{" "}
           with current industry opinions.
-        </h1>
+        </span>
       </div>
       <div className="flex w-full">
         <Button
-          variant="primary"
+          variant="purple"
           size="lg"
           onClick={onCtaClick}
           aria-label="Get a reality check"

@@ -32,7 +32,7 @@ function PaginationDots({
           key={i}
           role="tab"
           aria-selected={i === activeIndex}
-          className={`block w-2 h-2 rounded-full transition-colors ${
+          className={`block size-2 rounded-full transition-colors ${
             i === activeIndex
               ? "bg-[var(--accent-purple)] scale-125"
               : "bg-[var(--surface-elevated)]"
@@ -80,7 +80,7 @@ function SlideText({
   return (
     <p
       ref={containerRef}
-      className="text-[var(--foreground)] text-base sm:text-lg leading-relaxed max-w-[320px] mx-auto"
+      className="text-[var(--foreground)] text-lg sm:text-xl leading-relaxed max-w-[calc(var(--content-max-width)-54px)] mx-auto"
       aria-hidden={false}
     >
       {words.map((word, i) => (
@@ -168,7 +168,7 @@ export default function WalkthroughSection({
       aria-labelledby="walkthrough-heading"
     >
       <div className="flex-1 min-h-0 flex flex-col items-center justify-center w-full max-w-[var(--content-max-width)] mx-auto">
-        <div className="w-24 h-24 shrink-0 mb-6" aria-hidden />
+        <div className="w-24 h-24 shrink-0" aria-hidden />
         <Swiper
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
@@ -196,9 +196,9 @@ export default function WalkthroughSection({
             </SwiperSlide>
           ))}
         </Swiper>
-        <PaginationDots activeIndex={activeIndex} total={slides.length} />
       </div>
-      <div className="w-full mx-auto flex justify-center">
+      <PaginationDots activeIndex={activeIndex} total={slides.length} />
+      <div className="w-full mx-auto flex justify-center pt-8">
         <Button
           variant={isLastSlide ? "primary" : "secondary"}
           size="lg"
@@ -207,7 +207,7 @@ export default function WalkthroughSection({
           className={
             isLastSlide
               ? "bg-[var(--button-primary-bg)] text-[var(--button-primary-text)] w-full max-w-[calc(var(--content-max-width)-54px)]"
-              : "bg-[var(--button-secondary-bg)] text-[var(--foreground)] w-full max-w-[calc(var(--content-max-width)-54px)]"
+              : "bg-[var(--button-secondary-bg)] text-[var(--foreground)] w-full max-w-[calc(var(--content-max-width)-54px)] border-white/80"
           }
         >
           {buttonLabel}

@@ -3,7 +3,7 @@
 import { forwardRef } from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "ghost" | "icon";
+  variant?: "primary" | "secondary" | "ghost" | "icon" | "purple";
   size?: "md" | "lg" | "icon";
   children: React.ReactNode;
   className?: string;
@@ -15,7 +15,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref,
   ) => {
     const base =
-      "inline-flex items-center justify-center font-semibold transition-colors rounded-[var(--radius-lg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-purple)] disabled:opacity-50 disabled:pointer-events-none hover:cursor-pointer";
+      "inline-flex items-center justify-center  transition-colors rounded-[var(--radius-lg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-purple)] disabled:opacity-50 disabled:pointer-events-none hover:cursor-pointer";
 
     const variants = {
       primary:
@@ -25,6 +25,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ghost:
         "bg-transparent text-[var(--foreground)] hover:bg-[var(--accent-purple-soft)]",
       icon: "bg-[var(--nav-btn-bg)] text-[var(--foreground)] border border-[var(--nav-btn-border)] hover:bg-[var(--surface-elevated)]",
+      purple: "bg-[#e4c0f0] text-[#1a1a1e] hover:opacity-90",
     };
 
     const sizes = {
@@ -35,6 +36,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <button
+        style={{ fontFamily: "var(--font-graphik-medium)" }}
         ref={ref}
         type="button"
         className={`${base} ${variants[variant]} ${sizes[size]} ${className}`}

@@ -11,7 +11,7 @@ const STAGGER = 0.028;
 const DURATION = 0.2;
 
 const logoTextClasses =
-  "text-xl tracking-tight text-[var(--foreground)] leading-none";
+  "text-3xl tracking-tight text-[var(--foreground)] leading-none";
 
 const logoFontStyle: React.CSSProperties = {
   fontFamily: "var(--font-graphik-bold), system-ui, sans-serif",

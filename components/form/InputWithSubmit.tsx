@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef } from "react";
-import { ChevronUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import Button from "../ui/Button";
 
 interface InputWithSubmitProps extends Omit<
@@ -14,6 +14,7 @@ interface InputWithSubmitProps extends Omit<
   hideLabel?: boolean;
   onSubmit: () => void;
   submitLabel?: string;
+  value?: string;
 }
 
 const InputWithSubmit = forwardRef<HTMLInputElement, InputWithSubmitProps>(
@@ -25,10 +26,13 @@ const InputWithSubmit = forwardRef<HTMLInputElement, InputWithSubmitProps>(
       hideLabel = true,
       onSubmit,
       submitLabel = "Continue",
+      value = "",
       ...inputProps
     },
     ref,
   ) => {
+    const isEmpty = !value?.trim();
+    const isDisabled = isEmpty || !!error;
     return (
       <div className="w-full max-w-[var(--content-max-width)] mx-auto">
         <label
@@ -56,9 +60,10 @@ const InputWithSubmit = forwardRef<HTMLInputElement, InputWithSubmitProps>(
             size="icon"
             onClick={onSubmit}
             aria-label={submitLabel}
+            disabled={isDisabled}
             className="absolute right-2 top-1/2 -translate-y-1/2 shrink-0 size-8!"
           >
-            <ChevronUp className="w-5 h-5" aria-hidden />
+            <ArrowUp className="w-5 h-5" aria-hidden />
           </Button>
         </div>
         {error && (

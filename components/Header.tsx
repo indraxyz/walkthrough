@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, RotateCw } from "lucide-react";
+import { ArrowLeft, RefreshCcw } from "lucide-react";
 import Logo from "./Logo";
 import Button from "./ui/Button";
 
@@ -37,9 +37,9 @@ export default function Header({
             size="icon"
             onClick={onBack}
             aria-label="Go back"
-            className="shrink-0 size-8!"
+            className="shrink-0"
           >
-            <ArrowLeft className="size-4" aria-hidden />
+            <ArrowLeft className="size-5" aria-hidden />
           </Button>
         )}
       </div>
@@ -48,80 +48,22 @@ export default function Header({
         <Logo />
       </div>
 
-      <nav className="flex items-center justify-end gap-2" aria-label="Main navigation">
-        {/* <div className="hidden md:flex md:items-center md:gap-1">
-          {showSectionNav &&
-            onNavigateSection &&
-            navItems.map(({ id, label }) => (
-              <button
-                key={id}
-                type="button"
-                onClick={() => onNavigateSection(id)}
-                aria-current={currentSection === id ? "page" : undefined}
-                className="px-4 py-2 text-sm font-medium text-[var(--foreground-muted)] hover:text-[var(--foreground)] rounded-[var(--radius-md)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-purple)]"
-              >
-                {label}
-              </button>
-            ))}
-        </div> */}
+      <nav
+        className="flex items-center justify-end gap-2"
+        aria-label="Main navigation"
+      >
         <div className="flex items-center gap-2 md:gap-2">
-          {/* {showSectionNav && onNavigateSection && (
-            <div className="flex gap-1 md:hidden">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => onNavigateSection("hero")}
-                aria-label="Go to hero section"
-                aria-current={currentSection === "hero" ? "true" : undefined}
-                className="text-xs px-2 w-auto"
-              >
-                Hero
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => onNavigateSection("walkthrough")}
-                aria-label="Go to walkthrough"
-                aria-current={currentSection === "walkthrough" ? "true" : undefined}
-                className="text-xs px-2 w-auto"
-              >
-                Walk
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => onNavigateSection("form")}
-                aria-label="Go to form"
-                aria-current={currentSection === "form" ? "true" : undefined}
-                className="text-xs px-2 w-auto"
-              >
-                Form
-              </Button>
-            </div>
-          )} */}
           {onReset && (
             <Button
               variant="icon"
               size="icon"
               onClick={onReset}
               aria-label="Reset and start over"
-              className="shrink-0 size-8!"
+              className="shrink-0"
             >
-              <RotateCw className="size-4" aria-hidden />
+              <RefreshCcw className="size-5" aria-hidden />
             </Button>
           )}
-          {/* <div className="hidden md:block">
-            {onReset && (
-              <button
-                type="button"
-                onClick={onReset}
-                aria-label="Reset and start over"
-                className="px-4 py-2 text-sm font-medium text-[var(--foreground-muted)] hover:text-[var(--foreground)] rounded-[var(--radius-md)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-purple)]"
-              >
-                Reset
-              </button>
-            )}
-          </div> */}
         </div>
       </nav>
     </header>
