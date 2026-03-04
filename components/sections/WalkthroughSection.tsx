@@ -34,8 +34,8 @@ function PaginationDots({
           aria-selected={i === activeIndex}
           className={`block size-2 rounded-full transition-colors ${
             i === activeIndex
-              ? "bg-[var(--accent-purple)] scale-125"
-              : "bg-[var(--surface-elevated)]"
+              ? "bg-[--accent-purple] scale-125"
+              : "bg-(--surface-elevated)"
           }`}
         />
       ))}
@@ -86,7 +86,7 @@ function SlideText({
   return (
     <p
       ref={containerRef}
-      className="text-[var(--foreground)] text-lg sm:text-xl leading-relaxed max-w-[calc(var(--content-max-width)-54px)] mx-auto"
+      className="text-(--foreground) text-lg sm:text-xl leading-relaxed max-w-[calc(var(--content-max-width)-54px)] mx-auto"
       aria-hidden={false}
     >
       {words.map((word, i) => (
@@ -212,8 +212,8 @@ export default function WalkthroughSection({
           aria-label={buttonAriaLabel}
           className={
             isLastSlide
-              ? "bg-[var(--button-primary-bg)] text-[var(--button-primary-text)] w-full max-w-[calc(var(--content-max-width)-54px)]"
-              : "bg-[var(--button-secondary-bg)] text-[var(--foreground)] w-full max-w-[calc(var(--content-max-width)-54px)] border-white/80"
+              ? "bg-(--button-primary-bg) text-(--button-primary-text) w-full max-w-[calc(var(--content-max-width)-54px)]"
+              : "bg-(--button-secondary-bg) text-foreground w-full max-w-[calc(var(--content-max-width)-54px)] border-white/80"
           }
         >
           {buttonLabel}

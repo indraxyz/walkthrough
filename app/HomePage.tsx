@@ -251,10 +251,7 @@ export default function HomePage() {
           {hexagonLayer}
           <div className="section-view-transition relative z-10 h-full flex flex-col items-center justify-center overflow-hidden px-[var(--section-padding-x)] py-[var(--section-padding-y)]">
             {currentSection === "hero" && (
-              <HeroSection
-                onCtaClick={() => goToSection("walkthrough")}
-                scrollToWalkthrough={() => goToSection("walkthrough")}
-              />
+              <HeroSection onCtaClick={() => goToSection("walkthrough")} />
             )}
             {currentSection === "walkthrough" && (
               <WalkthroughSection onLastSlideContinue={handleGoToForm} />
@@ -301,10 +298,7 @@ export default function HomePage() {
             className="min-h-0 h-[33.333%] flex flex-col items-center justify-center overflow-hidden px-[var(--section-padding-x)] py-[var(--section-padding-y)]"
             inert={currentSection !== "hero" ? true : undefined}
           >
-            <HeroSection
-              onCtaClick={() => goToSection("walkthrough")}
-              scrollToWalkthrough={() => goToSection("walkthrough")}
-            />
+            <HeroSection onCtaClick={() => goToSection("walkthrough")} />
           </div>
           <div
             className="min-h-0 h-[33.333%] flex flex-col items-center justify-center overflow-hidden px-[var(--section-padding-x)] py-[var(--section-padding-y)]"

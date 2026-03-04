@@ -4,7 +4,6 @@ import Button from "../ui/Button";
 
 interface HeroSectionProps {
   onCtaClick: () => void;
-  scrollToWalkthrough: () => void;
 }
 
 const snippets = [
@@ -17,10 +16,7 @@ const snippets = [
 
 const ZIGZAG_TOP_PCT = [-30, -10, 30, 60, 90];
 
-export default function HeroSection({
-  onCtaClick,
-  scrollToWalkthrough,
-}: HeroSectionProps) {
+export default function HeroSection({ onCtaClick }: HeroSectionProps) {
   return (
     <section
       id="hero"
