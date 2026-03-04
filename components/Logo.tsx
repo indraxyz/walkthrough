@@ -9,6 +9,8 @@ const JB_INDICES = [0, 5];
 const CHAR_OFFSET_Y = 10;
 const STAGGER = 0.028;
 const DURATION = 0.2;
+const LEAVE_DURATION = 0.32;
+const LEAVE_STAGGER = 0.04;
 
 const logoTextClasses =
   "text-3xl tracking-tight text-[var(--foreground)] leading-none";
@@ -38,6 +40,9 @@ export default function Logo({ className = "" }: LogoProps) {
     if (!containerRef.current) return;
     const exitChars = getExitChars();
     if (!exitChars.length) return;
+    exitChars.forEach((el) => {
+      el.dataset.naturalWidth = String(el.offsetWidth);
+    });
     gsap.set(exitChars, { overflow: "hidden" });
     tlRef.current = gsap.timeline();
     tlRef.current.add(
@@ -79,8 +84,8 @@ export default function Logo({ className = "" }: LogoProps) {
         left: 0,
         xPercent: 0,
         top: 0,
-        duration: DURATION,
-        ease: "power2.out",
+        duration: LEAVE_DURATION,
+        ease: "sine.out",
       }),
       0,
     );
@@ -89,9 +94,10 @@ export default function Logo({ className = "" }: LogoProps) {
       {
         y: 0,
         opacity: 1,
-        duration: DURATION,
-        stagger: STAGGER,
-        ease: "power2.out",
+        width: (_, el) => Number((el as HTMLElement).dataset.naturalWidth) || 0,
+        duration: LEAVE_DURATION,
+        stagger: LEAVE_STAGGER,
+        ease: "sine.out",
       },
       0,
     );
@@ -121,7 +127,7 @@ export default function Logo({ className = "" }: LogoProps) {
         {LOGO_TEXT.split("").map((char, i) => (
           <span
             key={i}
-            className={`inline-block will-change-transform ${JB_INDICES.includes(i) ? "logo-char" : "logo-char logo-char-exit"}`}
+            className={`inline-block align-top leading-none ${JB_INDICES.includes(i) ? "logo-char" : "logo-char-exit"}`}
           >
             {char}
           </span>

@@ -25,7 +25,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ghost:
         "bg-transparent text-[var(--foreground)] hover:bg-[var(--accent-purple-soft)]",
       icon: "bg-[var(--nav-btn-bg)] text-[var(--foreground)] border border-[var(--nav-btn-border)] hover:bg-[var(--surface-elevated)]",
-      purple: "bg-[#e4c0f0] text-[#1a1a1e] hover:opacity-90",
+      purple: "bg-[var(--accent-purple)] text-[#1a1a1e] hover:opacity-90",
     };
 
     const sizes = {
