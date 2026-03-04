@@ -15,6 +15,7 @@ import {
   type WalkthroughFormData,
 } from "@/lib/form-schema";
 import InputWithSubmit from "../form/InputWithSubmit";
+import TextareaWithSubmit from "../form/TextareaWithSubmit";
 import Button from "../ui/Button";
 
 export interface FormSectionRef {
@@ -42,6 +43,12 @@ const steps = [
     placeholder: "Email address",
     field: "email" as const,
   },
+  {
+    id: "message",
+    prompt: "Anything you'd like to share?.",
+    placeholder: "Your message",
+    field: "message" as const,
+  },
 ];
 
 const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
@@ -64,7 +71,9 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
     }, [showThanks, onThanksChange]);
     const currentStep = steps[stepIndex];
     const isLastStep = stepIndex === steps.length - 1;
-    const inputRef = useRef<HTMLInputElement | null>(null);
+    const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(
+      null,
+    );
 
     const {
       register,
@@ -75,7 +84,7 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
       getValues,
     } = useForm<WalkthroughFormData>({
       resolver: zodResolver(walkthroughFormSchema),
-      defaultValues: { firstName: "", email: "" },
+      defaultValues: { firstName: "", email: "", message: "" },
       mode: "onChange",
     });
 
@@ -120,8 +129,12 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
           className="h-full min-h-0 flex flex-col items-center w-full"
         >
           <div className="flex-1 min-h-0 flex flex-col items-center justify-center w-full max-w-[var(--content-max-width)] mx-auto text-center">
-            <div className="w-24 h-24 shrink-0 mb-6" aria-hidden />
-            <p className="text-[var(--foreground)] text-lg sm:text-xl mb-2">
+            {values.message?.trim() && (
+              <blockquote className=" text-center w-full max-w-md mx-auto  py-3 text-lg sm:text-xl mt-12 ">
+                &ldquo;{values.message}&rdquo;
+              </blockquote>
+            )}
+            <p className="text-[var(--foreground)] text-lg sm:text-xl mb-2 mt-4">
               Thanks, {values.firstName}! Now, it&apos;s time to get a reality
               check.
             </p>
@@ -210,6 +223,26 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
                     }}
                     {...rest}
                     autoComplete="email"
+                  />
+                );
+              })()}
+            {currentStep.field === "message" &&
+              (() => {
+                const { ref: registerRef, ...rest } = register("message");
+                return (
+                  <TextareaWithSubmit
+                    id="message"
+                    label="Message"
+                    placeholder={currentStep.placeholder}
+                    value={watchedValue}
+                    error={errors.message?.message}
+                    onSubmit={handleStepSubmit}
+                    submitLabel="Continue"
+                    ref={(el) => {
+                      registerRef(el);
+                      inputRef.current = el;
+                    }}
+                    {...rest}
                   />
                 );
               })()}

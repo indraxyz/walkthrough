@@ -32,6 +32,12 @@ export default function ResultSection({ data, onReset }: ResultSectionProps) {
               {data.email}
             </dd>
           </div>
+          <div>
+            <dt className="text-sm text-[var(--foreground-subtle)] mb-1">Message</dt>
+            <dd className="text-[var(--foreground)] font-medium whitespace-pre-wrap" id="result-message">
+              {data.message || "—"}
+            </dd>
+          </div>
         </dl>
         <Button
           variant="primary"

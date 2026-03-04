@@ -66,6 +66,12 @@ const slides = [
     cta: "Get started",
     isLast: true,
   },
+  {
+    id: "w4",
+    text: "Now you're ready to get started. Let's go!",
+    cta: "Get started",
+    isLast: true,
+  },
 ];
 
 function SlideText({
