@@ -190,7 +190,7 @@ export default function HomePage() {
     currentSection === "walkthrough"
       ? "-12rem"
       : currentSection === "form"
-        ? "-20rem"
+        ? "-16rem"
         : "-10rem";
 
   const hexagonLayer = (
@@ -229,9 +229,7 @@ export default function HomePage() {
   );
 
   if (!mounted) {
-    return (
-      <div className="min-h-screen bg-(--background) text-foreground" />
-    );
+    return <div className="min-h-screen bg-(--background) text-foreground" />;
   }
 
   if (isMobile) {
