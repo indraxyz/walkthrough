@@ -190,7 +190,7 @@ export default function HomePage() {
     currentSection === "walkthrough"
       ? "-12rem"
       : currentSection === "form"
-        ? "-16rem"
+        ? "-20rem"
         : "-10rem";
 
   const hexagonLayer = (

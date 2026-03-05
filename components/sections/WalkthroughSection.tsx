@@ -34,7 +34,7 @@ function PaginationDots({
           aria-selected={i === activeIndex}
           className={`block size-2 rounded-full transition-colors ${
             i === activeIndex
-              ? "bg-[--accent-purple] scale-125"
+              ? "bg-(--accent-purple) scale-125"
               : "bg-(--surface-elevated)"
           }`}
         />
