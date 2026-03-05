@@ -230,13 +230,13 @@ export default function HomePage() {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]" />
+      <div className="min-h-screen bg-(--background) text-foreground" />
     );
   }
 
   if (isMobile) {
     return (
-      <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      <div className="min-h-screen bg-(--background) text-foreground">
         <Header
           onBack={currentSection !== "hero" ? handleBack : undefined}
           onReset={currentSection !== "hero" ? handleReset : undefined}
@@ -249,7 +249,7 @@ export default function HomePage() {
           style={{ height: "calc(100dvh - var(--header-height))" }}
         >
           {hexagonLayer}
-          <div className="section-view-transition relative z-10 h-full flex flex-col items-center justify-center overflow-hidden px-[var(--section-padding-x)] py-[var(--section-padding-y)]">
+          <div className="section-view-transition relative z-10 h-full flex flex-col items-center justify-center overflow-hidden px-(--section-padding-x) py-(--section-padding-y)">
             {currentSection === "hero" && (
               <HeroSection onCtaClick={() => goToSection("walkthrough")} />
             )}
@@ -274,7 +274,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+    <div className="min-h-screen bg-(--background) text-foreground">
       <Header
         onBack={currentSection !== "hero" ? handleBack : undefined}
         onReset={currentSection !== "hero" ? handleReset : undefined}
@@ -295,19 +295,19 @@ export default function HomePage() {
           }}
         >
           <div
-            className="min-h-0 h-[33.333%] flex flex-col items-center justify-center overflow-hidden px-[var(--section-padding-x)] py-[var(--section-padding-y)]"
+            className="min-h-0 h-[33.333%] flex flex-col items-center justify-center overflow-hidden px-(--section-padding-x) py-(--section-padding-y)"
             inert={currentSection !== "hero" ? true : undefined}
           >
             <HeroSection onCtaClick={() => goToSection("walkthrough")} />
           </div>
           <div
-            className="min-h-0 h-[33.333%] flex flex-col items-center justify-center overflow-hidden px-[var(--section-padding-x)] py-[var(--section-padding-y)]"
+            className="min-h-0 h-[33.333%] flex flex-col items-center justify-center overflow-hidden px-(--section-padding-x) py-(--section-padding-y)"
             inert={currentSection !== "walkthrough" ? true : undefined}
           >
             <WalkthroughSection onLastSlideContinue={handleGoToForm} />
           </div>
           <div
-            className="min-h-0 h-[33.333%] flex flex-col items-center justify-center overflow-hidden px-[var(--section-padding-x)] py-[var(--section-padding-y)]"
+            className="min-h-0 h-[33.333%] flex flex-col items-center justify-center overflow-hidden px-(--section-padding-x) py-(--section-padding-y)"
             inert={currentSection !== "form" ? true : undefined}
           >
             <FormSection

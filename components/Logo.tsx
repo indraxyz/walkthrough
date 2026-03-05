@@ -13,7 +13,7 @@ const LEAVE_DURATION = 0.32;
 const LEAVE_STAGGER = 0.04;
 
 const logoTextClasses =
-  "text-3xl tracking-tight text-[var(--foreground)] leading-none";
+  "text-3xl tracking-tight text-foreground leading-none";
 
 const logoFontStyle: React.CSSProperties = {
   fontFamily: "var(--font-graphik-bold), system-ui, sans-serif",

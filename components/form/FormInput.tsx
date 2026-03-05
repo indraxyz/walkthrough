@@ -18,18 +18,18 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
           className={
             hideLabel
               ? "sr-only"
-              : "block text-sm font-medium text-[var(--foreground-muted)] mb-2"
+              : "block text-sm font-medium text-(--foreground-muted) mb-2"
           }
         >
           {label}
         </label>
-        <div className="relative flex items-center rounded-[var(--radius-md)] border border-[var(--border-input)] bg-[var(--input-bg)] focus-within:border-[var(--accent-purple)] focus-within:ring-2 focus-within:ring-[var(--accent-purple-soft)]">
+        <div className="relative flex items-center rounded-md border border-(--border-input) bg-(--input-bg) focus-within:border-(--accent-purple) focus-within:ring-2 focus-within:ring-(--accent-purple-soft)">
           <input
             ref={ref}
             id={id}
             aria-invalid={!!error}
             aria-describedby={error ? `${id}-error` : undefined}
-            className={`flex-1 min-w-0 h-14 px-4 pr-14 bg-transparent text-[var(--foreground)] placeholder:text-[var(--input-placeholder)] text-base rounded-[var(--radius-md)] focus:outline-none focus:ring-0 ${className}`}
+            className={`flex-1 min-w-0 h-14 px-4 pr-14 bg-transparent text-foreground placeholder:text-(--input-placeholder) text-base rounded-md focus:outline-none focus:ring-0 ${className}`}
             {...props}
           />
         </div>

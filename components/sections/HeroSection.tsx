@@ -23,7 +23,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
       className="h-full min-h-0 flex flex-col items-center"
       aria-labelledby="hero-heading"
     >
-      <div className="flex-1 min-h-0 flex flex-col items-center justify-center w-full max-w-[var(--content-max-width)] mx-auto text-center">
+      <div className="flex-1 min-h-0 flex flex-col items-center justify-center w-full max-w-(--content-max-width) mx-auto text-center">
         <div className="relative w-full max-w-[min(100%,400px)] mx-auto h-[200px] sm:h-[240px] mb-8 flex items-center justify-center pointer-events-none">
           {snippets.map((text, i) => {
             const isLeft = i % 2 === 0;
@@ -31,7 +31,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
             return (
               <span
                 key={i}
-                className="absolute text-xs md:text-base text-[var(--foreground-muted)]  leading-tight max-w-[100%] whitespace-normal  sm:overflow-hidden "
+                className="absolute text-xs md:text-base text-(--foreground-muted)  leading-tight max-w-full whitespace-normal  sm:overflow-hidden "
                 style={{
                   left: isLeft ? 0 : undefined,
                   right: isLeft ? undefined : 0,
@@ -47,15 +47,15 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
         </div>
         <span
           id="hero-heading"
-          className="text-2xl sm:text-3xl text-[var(--foreground)] leading-tight max-w-sm pt-8"
+          className="text-2xl sm:text-3xl text-foreground leading-tight max-w-sm pt-8"
           style={{ fontFamily: "var(--font-graphik-medium)" }}
         >
           Compare your thoughts on{" "}
           <span
-            className="bg-clip-text text-transparent"
+            className="bg-clip-text text-transparent animate-gradient-text"
             style={{
               backgroundImage:
-                "linear-gradient(90deg, #e4c0f0, #ae82bd, #abb3f5)",
+                "linear-gradient(90deg, #e4c0f0, #ae82bd, #abb3f5, #e4c0f0)",
               fontFamily: "var(--font-graphik-medium)",
             }}
           >
@@ -70,7 +70,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
           size="lg"
           onClick={onCtaClick}
           aria-label="Get a reality check"
-          className="rounded-[var(--radius-xl)] w-full! mx-auto"
+          className="rounded-xl w-full! mx-auto"
         >
           Get a reality check
         </Button>

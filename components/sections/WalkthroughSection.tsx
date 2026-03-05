@@ -86,7 +86,7 @@ function SlideText({
   return (
     <p
       ref={containerRef}
-      className="text-(--foreground) text-lg sm:text-xl leading-relaxed max-w-[calc(var(--content-max-width)-54px)] mx-auto"
+      className="text-foreground text-lg sm:text-xl leading-relaxed max-w-[calc(var(--content-max-width)-54px)] mx-auto"
       aria-hidden={false}
     >
       {words.map((word, i) => (
@@ -173,7 +173,7 @@ export default function WalkthroughSection({
       className="h-full min-h-0 flex flex-col items-center"
       aria-labelledby="walkthrough-heading"
     >
-      <div className="flex-1 min-h-0 flex flex-col items-center justify-center w-full max-w-[var(--content-max-width)] mx-auto">
+      <div className="flex-1 min-h-0 flex flex-col items-center justify-center w-full max-w-(--content-max-width) mx-auto">
         <div className="w-24 h-24 shrink-0" aria-hidden />
         <Swiper
           onSwiper={(swiper) => {
@@ -181,7 +181,7 @@ export default function WalkthroughSection({
           }}
           onSlideChange={handleSlideChange}
           modules={[]}
-          className="w-full max-w-[var(--content-max-width)] mx-auto flex flex-col items-center"
+          className="w-full max-w-(--content-max-width) mx-auto flex flex-col items-center"
           spaceBetween={32}
           slidesPerView={1}
           allowTouchMove={true}

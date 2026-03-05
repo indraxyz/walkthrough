@@ -29,7 +29,7 @@ export default function SolidHexagon({
       width={s}
       height={s}
       viewBox={`0 0 ${s} ${s}`}
-      className={`flex-shrink-0 ${className}`}
+      className={`shrink-0 ${className}`}
       aria-hidden
     >
       <polygon

@@ -8,7 +8,7 @@ import {
   forwardRef,
   useImperativeHandle,
 } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   walkthroughFormSchema,
@@ -78,7 +78,7 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
     const {
       register,
       handleSubmit,
-      watch,
+      control,
       trigger,
       formState: { errors },
       getValues,
@@ -88,7 +88,12 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
       mode: "onChange",
     });
 
-    const watchedValue = watch(currentStep?.field ?? "firstName") ?? "";
+    const watchedValue =
+      (useWatch({
+        control,
+        name: currentStep?.field ?? "firstName",
+        defaultValue: "",
+      }) as string) ?? "";
 
     useEffect(() => {
       if (!isActive) return;
@@ -116,7 +121,6 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
       isLastStep,
       trigger,
       handleSubmit,
-      onSubmitSuccess,
       onStepChange,
       stepIndex,
     ]);
@@ -128,21 +132,21 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
           id="form"
           className="h-full min-h-0 flex flex-col items-center w-full"
         >
-          <div className="flex-1 min-h-0 flex flex-col items-center justify-center w-full max-w-[var(--content-max-width)] mx-auto text-center">
+          <div className="flex-1 min-h-0 flex flex-col items-center justify-center w-full max-w-(--content-max-width) mx-auto text-center">
             {values.message?.trim() && (
               <blockquote className=" text-center w-full max-w-md mx-auto  py-3 text-lg sm:text-xl mt-12 ">
                 &ldquo;{values.message}&rdquo;
               </blockquote>
             )}
-            <p className="text-[var(--foreground)] text-lg sm:text-xl mb-2 mt-4">
+            <p className="text-foreground text-lg sm:text-xl mb-2 mt-4">
               Thanks, {values.firstName}! Now, it&apos;s time to get a reality
               check.
             </p>
-            <p className="text-[var(--foreground-muted)] text-lg sm:text-xl">
+            <p className="text-(--foreground-muted) text-lg sm:text-xl">
               This will take 2-3 minutes.
             </p>
           </div>
-          <div className="w-full max-w-[var(--content-max-width)] mx-auto pt-4 pb-2 flex justify-center shrink-0">
+          <div className="w-full max-w-(--content-max-width) mx-auto pt-4 pb-2 flex justify-center shrink-0">
             <Button
               variant="primary"
               size="lg"
@@ -150,7 +154,7 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
                 onSubmitSuccess(getValues() as WalkthroughFormData)
               }
               aria-label="Continue"
-              className="rounded-[var(--radius-xl)] w-full! mx-auto"
+              className="rounded-xl w-full! mx-auto"
             >
               Continue
             </Button>
@@ -165,12 +169,12 @@ const FormSection = forwardRef<FormSectionRef, FormSectionProps>(
         className="h-full min-h-0 flex flex-col items-center w-full"
         aria-labelledby="form-heading"
       >
-        <div className="flex-1 min-h-0 flex flex-col items-center justify-center w-full max-w-[var(--content-max-width)] mx-auto">
+        <div className="flex-1 min-h-0 flex flex-col items-center justify-center w-full max-w-(--content-max-width) mx-auto">
           <div className="w-24 h-24 shrink-0 mb-6" aria-hidden />
           <h2 id="form-heading" className="sr-only">
             Form step {stepIndex + 1}: {currentStep.field}
           </h2>
-          <p className="text-[var(--foreground)] text-center text-lg sm:text-xl mb-6 max-w-[var(--content-max-width)]">
+          <p className="text-foreground text-center text-lg sm:text-xl mb-6 max-w-(--content-max-width)">
             {currentStep.prompt}
           </p>
         </div>

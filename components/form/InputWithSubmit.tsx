@@ -34,24 +34,24 @@ const InputWithSubmit = forwardRef<HTMLInputElement, InputWithSubmitProps>(
     const isEmpty = !value?.trim();
     const isDisabled = isEmpty || !!error;
     return (
-      <div className="w-full max-w-[var(--content-max-width)] mx-auto">
+      <div className="w-full max-w-(--content-max-width) mx-auto">
         <label
           htmlFor={id}
           className={
             hideLabel
               ? "sr-only"
-              : "block text-sm font-medium text-[var(--foreground-muted)] mb-2"
+              : "block text-sm font-medium text-(--foreground-muted) mb-2"
           }
         >
           {label}
         </label>
-        <div className="relative flex items-center rounded-[var(--radius-md)] border border-[var(--border-input)] bg-[var(--input-bg)] focus-within:border-[var(--accent-purple)] focus-within:ring-2 focus-within:ring-[var(--accent-purple-soft)]">
+        <div className="relative flex items-center rounded-md border border-(--border-input) bg-(--input-bg) focus-within:border-(--accent-purple) focus-within:ring-2 focus-within:ring-(--accent-purple-soft)">
           <input
             ref={ref}
             id={id}
             aria-invalid={!!error}
             aria-describedby={error ? `${id}-error` : undefined}
-            className="flex-1 min-w-0 h-14 pl-4 pr-14 bg-transparent text-[var(--foreground)] placeholder:text-[var(--input-placeholder)] text-base rounded-l-[var(--radius-md)] focus:rounded-md focus:outline-none focus:ring-0"
+            className="flex-1 min-w-0 h-14 pl-4 pr-14 bg-transparent text-foreground placeholder:text-(--input-placeholder) text-base rounded-l-md focus:rounded-md focus:outline-none focus:ring-0"
             {...inputProps}
           />
           <Button

@@ -15,7 +15,7 @@ interface HeaderProps {
 export default function Header({ onBack, onReset }: HeaderProps) {
   return (
     <header
-      className="sticky top-0 z-50 grid h-[var(--header-height)] grid-cols-[1fr_auto_1fr] items-center bg-transparent px-[var(--section-padding-x)] max-w-3xl mx-auto"
+      className="sticky top-0 z-50 grid h-(--header-height) grid-cols-[1fr_auto_1fr] items-center bg-transparent px-(--section-padding-x) max-w-3xl mx-auto"
       role="banner"
     >
       <div className="flex items-center gap-2 justify-start">
