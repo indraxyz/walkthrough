@@ -29,7 +29,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
             id={id}
             aria-invalid={!!error}
             aria-describedby={error ? `${id}-error` : undefined}
-            className={`flex-1 min-w-0 h-14 px-4 pr-14 bg-transparent text-foreground placeholder:text-(--input-placeholder) text-base rounded-md focus:outline-none focus:ring-0 ${className}`}
+            className={`flex-1 min-w-0 h-14 px-4 pr-14 bg-transparent text-foreground placeholder:text-(--input-placeholder) text-base rounded-md focus:outline-hidden focus:ring-0 ${className}`}
             {...props}
           />
         </div>

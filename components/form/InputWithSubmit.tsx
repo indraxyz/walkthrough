@@ -51,7 +51,7 @@ const InputWithSubmit = forwardRef<HTMLInputElement, InputWithSubmitProps>(
             id={id}
             aria-invalid={!!error}
             aria-describedby={error ? `${id}-error` : undefined}
-            className="flex-1 min-w-0 h-14 pl-4 pr-14 bg-transparent text-foreground placeholder:text-(--input-placeholder) text-base rounded-l-md focus:rounded-md focus:outline-none focus:ring-0"
+            className="flex-1 min-w-0 h-14 pl-4 pr-14 bg-transparent text-foreground placeholder:text-(--input-placeholder) text-base rounded-s-md focus:rounded-md focus:outline-hidden focus:ring-0"
             {...inputProps}
           />
           <Button

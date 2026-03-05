@@ -56,7 +56,7 @@ const TextareaWithSubmit = forwardRef<
             id={id}
             aria-invalid={!!error}
             aria-describedby={error ? `${id}-error` : undefined}
-            className={`flex-1 min-h-[6rem] py-3 pl-4 pr-14 pb-14 bg-transparent text-foreground placeholder:text-(--input-placeholder) text-base rounded-md focus:outline-none focus:ring-0 resize-y ${className}`}
+            className={`flex-1 min-h-24 py-3 pl-4 pr-14 pb-14 bg-transparent text-foreground placeholder:text-(--input-placeholder) text-base rounded-md focus:outline-hidden focus:ring-0 resize-y ${className}`}
             value={value}
             {...textareaProps}
           />

@@ -229,12 +229,12 @@ export default function HomePage() {
   );
 
   if (!mounted) {
-    return <div className="min-h-screen bg-(--background) text-foreground" />;
+    return <div className="min-h-screen bg-background text-foreground" />;
   }
 
   if (isMobile) {
     return (
-      <div className="min-h-screen bg-(--background) text-foreground">
+      <div className="min-h-screen bg-background text-foreground">
         <Header
           onBack={currentSection !== "hero" ? handleBack : undefined}
           onReset={currentSection !== "hero" ? handleReset : undefined}
@@ -272,7 +272,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-(--background) text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <Header
         onBack={currentSection !== "hero" ? handleBack : undefined}
         onReset={currentSection !== "hero" ? handleReset : undefined}
