@@ -12,22 +12,10 @@ interface HeaderProps {
   showSectionNav?: boolean;
 }
 
-const navItems = [
-  { id: "hero" as const, label: "Hero" },
-  { id: "walkthrough" as const, label: "Walkthrough" },
-  { id: "form" as const, label: "Form" },
-] as const;
-
-export default function Header({
-  onBack,
-  onReset,
-  onNavigateSection,
-  currentSection = "hero",
-  showSectionNav = false,
-}: HeaderProps) {
+export default function Header({ onBack, onReset }: HeaderProps) {
   return (
     <header
-      className="sticky top-0 z-50 grid h-[var(--header-height)] grid-cols-[1fr_auto_1fr] items-center bg-transparent px-[var(--section-padding-x)]"
+      className="sticky top-0 z-50 grid h-[var(--header-height)] grid-cols-[1fr_auto_1fr] items-center bg-transparent px-[var(--section-padding-x)] max-w-3xl mx-auto"
       role="banner"
     >
       <div className="flex items-center gap-2 justify-start">
